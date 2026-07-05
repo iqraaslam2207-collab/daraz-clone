@@ -4,7 +4,7 @@ A responsive e-commerce homepage inspired by [Daraz.pk](https://www.daraz.pk), b
 
 ## Live Demo
 
-**[View Live Site](https://iqraaslam2207-collab.github.io/daraz-clone/daraz.html)**
+**[View Live Site](https://iqraaslam2207-collab.github.io/daraz-clone/)**
 
 ## Screenshots
 

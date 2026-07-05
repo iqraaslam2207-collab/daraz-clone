@@ -794,6 +794,15 @@ footer {
     font-weight: 400;
 }
 
+.footer-copyright a {
+    color: #f57224;
+    text-decoration: none;
+}
+
+.footer-copyright a:hover {
+    text-decoration: underline;
+}
+
 /* Responsive adjustments */
 @media (max-width: 1240px) {
     .slideshow-app-container,
