@@ -8,7 +8,8 @@ function scrollToSection(sectionId) {
   const target = document.getElementById(sectionId);
   if (!target) return;
 
-  const headerHeight = document.querySelector('header').offsetHeight;
+  const header = document.querySelector('.site-header');
+  const headerHeight = header ? header.offsetHeight : 0;
   const top = target.getBoundingClientRect().top + window.pageYOffset - headerHeight - 10;
 
   window.scrollTo({
@@ -16,15 +17,39 @@ function scrollToSection(sectionId) {
     behavior: 'smooth'
   });
 
-  // Scroll ke baad section highlight
   target.classList.add('nav-highlight');
   setTimeout(function () {
     target.classList.remove('nav-highlight');
   }, 1500);
 }
 
+function showToast(message) {
+  const toast = document.getElementById('toast');
+  if (!toast) return;
+
+  toast.textContent = message;
+  toast.hidden = false;
+  toast.classList.add('is-visible');
+
+  clearTimeout(showToast._timer);
+  showToast._timer = setTimeout(function () {
+    toast.classList.remove('is-visible');
+    toast.hidden = true;
+  }, 2800);
+}
+
+function updateCartCount(delta) {
+  const badge = document.getElementById('cart-count');
+  if (!badge) return;
+
+  const current = Number(badge.dataset.count || badge.textContent || 0);
+  const next = Math.max(0, current + delta);
+  badge.textContent = String(next);
+  badge.dataset.count = String(next);
+}
+
 // Navbar buttons — har button apni exact jagah par
-document.querySelectorAll('.top-navigation a[data-nav]').forEach(function (link) {
+document.querySelectorAll('.top-navigation a[data-nav], .header-action[data-nav]').forEach(function (link) {
   link.addEventListener('click', function (e) {
     e.preventDefault();
     scrollToSection(this.getAttribute('data-nav'));
@@ -47,11 +72,20 @@ document.querySelectorAll('a[href^="#"]:not([data-nav]):not(#lang-toggle)').forE
   });
 });
 
+// Category strip links
+document.querySelectorAll('.category-strip a').forEach(function (link) {
+  link.addEventListener('click', function (e) {
+    e.preventDefault();
+    scrollToSection('categories');
+  });
+});
+
 // Search form
 document.getElementById('search-form').addEventListener('submit', function (e) {
   e.preventDefault();
   const query = document.getElementById('search').value.trim();
   if (query) {
+    showToast('Showing results for "' + query + '"');
     scrollToSection('flash-sale');
   }
 });
@@ -59,13 +93,14 @@ document.getElementById('search-form').addEventListener('submit', function (e) {
 // Login form
 document.getElementById('login-form').addEventListener('submit', function (e) {
   e.preventDefault();
-  alert('Login successful! Welcome to Daraz.');
+  showToast('Welcome back! You are logged in.');
 });
 
 // Sign up form
 document.getElementById('signup-form').addEventListener('submit', function (e) {
   e.preventDefault();
-  alert('Account created successfully! You can now login.');
+  showToast('Account created. You can sign in now.');
+  scrollToSection('login');
 });
 
 // Language toggle
@@ -100,6 +135,37 @@ document.getElementById('load-more').addEventListener('click', function () {
   });
   this.style.display = 'none';
 });
+
+// Add to cart on product click
+document.querySelectorAll('[data-product]').forEach(function (card) {
+  card.addEventListener('click', function () {
+    updateCartCount(1);
+    showToast('Item added to cart');
+  });
+});
+
+// Live flash sale countdown
+(function () {
+  const timerEl = document.getElementById('flash-timer');
+  if (!timerEl) return;
+
+  const endTime = Date.now() + (5 * 60 * 60 * 1000) + (42 * 60 * 1000) + (18 * 1000);
+
+  function pad(value) {
+    return String(value).padStart(2, '0');
+  }
+
+  function tick() {
+    const remaining = Math.max(0, endTime - Date.now());
+    const hours = Math.floor(remaining / (1000 * 60 * 60));
+    const minutes = Math.floor((remaining % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((remaining % (1000 * 60)) / 1000);
+    timerEl.textContent = pad(hours) + ':' + pad(minutes) + ':' + pad(seconds);
+  }
+
+  tick();
+  setInterval(tick, 1000);
+})();
 
 // Auto slideshow
 (function () {

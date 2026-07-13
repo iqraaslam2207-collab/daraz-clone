@@ -58,7 +58,7 @@ daraz-clone/
 **Iqra Aslam**
 
 - GitHub: [@iqraaslam2207-collab](https://github.com/iqraaslam2207-collab)
-- LinkedIn: [Add your LinkedIn URL here]
+
 
 ## License
 

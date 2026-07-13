@@ -7,37 +7,66 @@
     <meta name="keywords" content="Daraz, online shopping, e-commerce, Pakistan, Bangladesh, Sri Lanka, Nepal, Myanmar">
     <meta name="author" content="Iqra Aslam">
     <link rel="shortcut icon" href="image1.png" type="image/x-icon">
-    <title>DARAZ APP</title>
-    <!-- font awesome icon -->
+    <title>Online Shopping in Pakistan — Daraz.pk</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <link rel="stylesheet" href="daraz.css">
 </head>
-<body id="home"> 
-<header>
-    <nav class="top-navigation">
+<body id="home">
+<header class="site-header">
+    <nav class="top-navigation" aria-label="Utility">
         <ul>
             <li><a href="#save-more-app" data-nav="save-more-app">SAVE MORE ON APP</a></li>
             <li><a href="#sell-on-daraz" data-nav="sell-on-daraz">SELL ON DARAZ</a></li>
-            <li><a href="#help-support" data-nav="help-support">HELP & SUPPORT</a></li>
+            <li><a href="#help-support" data-nav="help-support">HELP &amp; SUPPORT</a></li>
             <li><a href="#login" data-nav="login">LOGIN</a></li>
             <li><a href="#signup" data-nav="signup">SIGN UP</a></li>
             <li><a href="#" id="lang-toggle" lang="ur">زبان تبدیل کریں</a></li>
         </ul>
     </nav>
     <div class="logo-search-cart">
-        <a href="#home"><img src="https://lzd-img-global.slatic.net/us/domino/3b870cb043c7f8a9741cbf66329e294e.png" alt="Daraz logo"></a>
+        <a href="#home" class="site-logo" aria-label="Daraz home">
+            <img src="daraz-logo.png" alt="Daraz" width="127" height="40">
+        </a>
 
-        <form id="search-form" action="#" method="get">
-            <input type="search" name="search" id="search" placeholder="Search in Daraz" >
-            <button type="submit">
-                <i class="fa-solid fa-magnifying-glass"></i>
+        <form id="search-form" action="#" method="get" class="search-form" role="search">
+            <label class="visually-hidden" for="search">Search products on Daraz</label>
+            <input type="search" name="search" id="search" placeholder="Search in Daraz" autocomplete="off">
+            <button type="submit" aria-label="Search">
+                <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
             </button>
         </form>
-        <div class="cart">
-            <a href="#flash-sale" aria-label="View cart"><i class="fa-solid fa-cart-shopping"></i></a>
+
+        <div class="header-actions">
+            <a href="#login" class="header-action" data-nav="login" aria-label="Account">
+                <i class="fa-regular fa-user" aria-hidden="true"></i>
+                <span>Account</span>
+            </a>
+            <a href="#flash-sale" class="header-action header-action--cart" aria-label="Shopping cart">
+                <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>
+                <span class="cart-badge" id="cart-count">0</span>
+                <span>Cart</span>
+            </a>
         </div>
     </div>
+
+    <nav class="category-strip" aria-label="Shop categories">
+        <div class="category-strip__inner">
+            <a href="#categories">Groceries</a>
+            <a href="#categories">Electronics</a>
+            <a href="#categories">Fashion</a>
+            <a href="#categories">Home &amp; Living</a>
+            <a href="#categories">Health &amp; Beauty</a>
+            <a href="#categories">Sports &amp; Outdoor</a>
+            <a href="#categories">Babies &amp; Toys</a>
+            <a href="#categories">Automotive</a>
+        </div>
+    </nav>
 </header>
+
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
 
 <section class="slideshow-app-container">
     <div class="slide-container">
@@ -63,6 +92,12 @@
              <label class="next next-from-2" for="slide3" aria-label="Next slide">&#10095;</label>
              <label class="next next-from-3" for="slide1" aria-label="Next slide">&#10095;</label>
          </nav>
+
+         <div class="slide-dots" aria-hidden="true">
+             <label for="slide1" aria-label="Slide 1"></label>
+             <label for="slide2" aria-label="Slide 2"></label>
+             <label for="slide3" aria-label="Slide 3"></label>
+         </div>
     </div>
 
     <div class="app-container" id="save-more-app">
@@ -93,69 +128,94 @@
     </div>
 </section>
 <section class="product-container flash-sale" id="flash-sale">
-    <h4>Flash Sale</h4>
+    <h4 class="section-title">Flash Sale</h4>
     <div class="flash-sale-box">
         <div class="product-top">
             <div class="sale-heading">
-                <p>On Sale Now</p>
-                <span class="sale-timer">Ending in 05:42:18</span>
+                <p class="sale-heading__title"><i class="fa-solid fa-bolt" aria-hidden="true"></i> On Sale Now</p>
+                <div class="sale-timer-wrap">
+                    <span class="sale-timer-label">Ending in</span>
+                    <span class="sale-timer" id="flash-timer" aria-live="polite">00:00:00</span>
+                </div>
             </div>
-            <a href="#">SHOP ALL PRODUCTS</a>
+            <a href="#" class="shop-all-btn">SHOP ALL PRODUCTS</a>
         </div>
         <div class="product-row">
-        <article class="product-card">
-            <img src="https://img.drz.lazcdn.com/static/pk/p/2d18873962775f2051bf3b5b334deebb.jpg_400x400q80.jpg" alt="Bluetooth earbuds">
+        <article class="product-card" data-product>
+            <div class="product-card__media">
+                <span class="product-badge product-badge--mall">Mall</span>
+                <img src="https://img.drz.lazcdn.com/static/pk/p/2d18873962775f2051bf3b5b334deebb.jpg_400x400q80.jpg" alt="Bluetooth earbuds">
+            </div>
             <div class="product-info">
                 <p class="product-title">M10 , A6s , F2 earbuds Headphones,Handfree,EarPhone, Bluetooth Neckband Magnetic Earphones Sport Running Earbuds Waterproof Bluetooth 5.2 Headset With Mic, SM Trader</p>
                 <p class="product-price"><span class="sale-price">Rs.444</span></p>
                 <p class="product-discount"><del class="old-price">Rs.999</del> <span class="discount-badge">-56%</span></p>
+                <p class="product-sold">1.2k sold</p>
             </div>
         </article>
-         <article class="product-card">
-            <img src="https://img.drz.lazcdn.com/static/pk/p/5d2ff5fbcec846566c97ce1be13dcb6e.png_400x400q80.png" alt="National Bombay Biryani">
+         <article class="product-card" data-product>
+            <div class="product-card__media">
+                <img src="https://img.drz.lazcdn.com/static/pk/p/5d2ff5fbcec846566c97ce1be13dcb6e.png_400x400q80.png" alt="National Bombay Biryani">
+            </div>
             <div class="product-info">
                 <p class="product-title">National Bombay Biryani Karachi Khaas 70g</p>
                 <p class="product-price"><span class="sale-price">Rs.123</span></p>
                 <p class="product-discount"><del class="old-price">Rs.150</del> <span class="discount-badge">-18%</span></p>
+                <span class="product-badge product-badge--shipping">Free Shipping</span>
             </div>
         </article>
-         <article class="product-card">
-            <img src="https://img.drz.lazcdn.com/static/pk/p/8fbd60d21ae94bf205274af96a6d4412.jpg_400x400q80.jpg" alt="Wireless Bluetooth Headset">
+         <article class="product-card" data-product>
+            <div class="product-card__media">
+                <img src="https://img.drz.lazcdn.com/static/pk/p/8fbd60d21ae94bf205274af96a6d4412.jpg_400x400q80.jpg" alt="Wireless Bluetooth Headset">
+            </div>
             <div class="product-info">
                 <p class="product-title">Wireless Bluetooth Headset 5.3 Bluetooth Protocol Earplug Type Strong Endurance Gaming Competitive Headphones TWS Running Earbuds</p>
                 <p class="product-price"><span class="sale-price">Rs.799</span></p>
                 <p class="product-discount"><del class="old-price">Rs.999</del> <span class="discount-badge">-20%</span></p>
+                <p class="product-sold">856 sold</p>
             </div>
         </article>
-         <article class="product-card">
-            <img src="https://img.drz.lazcdn.com/static/pk/p/9df4998c0b962c7f21252b577fba5057.png_400x400q80.png" alt="Meclay London Shampoo">
+         <article class="product-card" data-product>
+            <div class="product-card__media">
+                <span class="product-badge product-badge--mall">Mall</span>
+                <img src="https://img.drz.lazcdn.com/static/pk/p/9df4998c0b962c7f21252b577fba5057.png_400x400q80.png" alt="Meclay London Shampoo">
+            </div>
             <div class="product-info">
                 <p class="product-title">Meclay London Thick & Dense Shampoo 660ml + Conditioner 180ml Pair</p>
                 <p class="product-price"><span class="sale-price">Rs.1,664</span></p>
                 <p class="product-discount"><del class="old-price">Rs.1,820</del> <span class="discount-badge">-9%</span></p>
+                <span class="product-badge product-badge--shipping">Free Shipping</span>
             </div>
         </article>
-         <article class="product-card">
-            <img src="https://img.drz.lazcdn.com/static/pk/p/65a78ea15e58a54f32578cace69ca56e.jpg_400x400q80.jpg" alt="Bata Men Sneakers">
+         <article class="product-card" data-product>
+            <div class="product-card__media">
+                <img src="https://img.drz.lazcdn.com/static/pk/p/65a78ea15e58a54f32578cace69ca56e.jpg_400x400q80.jpg" alt="Bata Men Sneakers">
+            </div>
             <div class="product-info">
                 <p class="product-title">Bata - Men Sneakers For Men</p>
                 <p class="product-price"><span class="sale-price">Rs.1,499</span></p>
                 <p class="product-discount"><del class="old-price">Rs.1,999</del> <span class="discount-badge">-25%</span></p>
+                <p class="product-sold">2.4k sold</p>
             </div>
         </article>
-         <article class="product-card">
-            <img src="https://img.drz.lazcdn.com/static/pk/p/761c76decc92bd48fdf328b729c74757.jpg_400x400q80.jpg" alt="MoltyFoam Mattress">
+         <article class="product-card" data-product>
+            <div class="product-card__media">
+                <span class="product-badge product-badge--mall">Mall</span>
+                <img src="https://img.drz.lazcdn.com/static/pk/p/761c76decc92bd48fdf328b729c74757.jpg_400x400q80.jpg" alt="MoltyFoam Mattress">
+            </div>
             <div class="product-info">
                 <p class="product-title">Be Mattress in a Box by MoltyFoam</p>
                 <p class="product-price"><span class="sale-price">Rs.27,600</span></p>
                 <p class="product-discount"><del class="old-price">Rs.34,500</del> <span class="discount-badge">-20%</span></p>
+                <span class="product-badge product-badge--shipping">Free Shipping</span>
             </div>
         </article>
     </div>
     </div>
 </section>
 <section class="categories" id="categories">
-    <h4>Categories</h4>
+    <h4 class="section-title">Categories</h4>
+    <div class="categories-card">
     <div class="categoris">
         
  <div class="collection">
@@ -224,13 +284,14 @@
             <p>Donate to Educate</p>
         </div> 
     </div>
+    </div>
 </section>
 
 
 <section class="featured-collection" id="just-for-you">
-    <h4>Just For You</h4>
+    <h4 class="section-title">Just For You</h4>
     <div class="feature-products">
-        <article class="featured-product">
+        <article class="featured-product" data-product>
             <img src="https://img.drz.lazcdn.com/static/pk/p/deb3a6eb570b23b579f19c53e6bd54fc.jpg_400x400q80.jpg_.webp" alt="Finish Dishwasher Tablets">
             <div class="product-info">
                 <p>Finish Dishwasher Tablets Ultimate Plus All In One 33 Tab</p>
@@ -245,7 +306,7 @@
                 </div>
             </div>
         </article>
-        <article class="featured-product">
+        <article class="featured-product" data-product>
             <img src="https://img.drz.lazcdn.com/g/kf/S5422162cd25b48a5a134578f48c9bcb87.jpg_400x400q80.jpg_.webp" alt="Kitchen cleaning product">
             <div class="product-info">
                 <p>Premium Kitchen Cleaning Bundle - Multi Surface Cleaner</p>
@@ -260,7 +321,7 @@
                 </div>
             </div>
         </article>
-        <article class="featured-product">
+        <article class="featured-product" data-product>
             <img src="https://img.drz.lazcdn.com/static/pk/p/2ca2015bd30ed6d0b9e6c92f9790c898.jpg_400x400q80.jpg_.webp" alt="Home essentials pack">
             <div class="product-info">
                 <p>Daily Home Essentials Combo Pack - Best Value Deal</p>
@@ -275,7 +336,7 @@
                 </div>
             </div>
         </article>
-        <article class="featured-product">
+        <article class="featured-product" data-product>
             <img src="https://img.drz.lazcdn.com/static/pk/p/640b173ad3acdaa435c6f7dfc190891a.jpg_400x400q80.jpg_.webp" alt="Personal care product">
             <div class="product-info">
                 <p>Organic Personal Care Set - Shampoo and Conditioner</p>
@@ -290,7 +351,7 @@
                 </div>
             </div>
         </article>
-        <article class="featured-product">
+        <article class="featured-product" data-product>
             <img src="https://img.drz.lazcdn.com/static/pk/p/7ee8232d887e9d55fef0641ef929201b.jpg_400x400q80.jpg_.webp" alt="Fashion accessories">
             <div class="product-info">
                 <p>Trendy Fashion Accessories Pack for Men and Women</p>
@@ -305,7 +366,7 @@
                 </div>
             </div>
         </article>
-        <article class="featured-product">
+        <article class="featured-product" data-product>
             <img src="https://img.drz.lazcdn.com/static/pk/p/91c4daf8379264a41356357c6d923d41.jpg_400x400q80.jpg_.webp" alt="Electronics gadget">
             <div class="product-info">
                 <p>Portable Mini USB Fan - Rechargeable Desktop Cooler</p>
@@ -382,7 +443,40 @@
         </article>
     </div>
 </section>
-  <button id="load-more" type="button">Load More</button>
+  <button id="load-more" type="button">LOAD MORE</button>
+
+  <section class="service-strip" aria-label="Daraz services">
+    <div class="service-strip__inner">
+      <div class="service-item">
+        <i class="fa-solid fa-store" aria-hidden="true"></i>
+        <div>
+          <strong>DarazMall</strong>
+          <span>100% Authentic</span>
+        </div>
+      </div>
+      <div class="service-item">
+        <i class="fa-solid fa-rotate-left" aria-hidden="true"></i>
+        <div>
+          <strong>7 Days Return</strong>
+          <span>Easy returns policy</span>
+        </div>
+      </div>
+      <div class="service-item">
+        <i class="fa-solid fa-truck-fast" aria-hidden="true"></i>
+        <div>
+          <strong>Free Shipping</strong>
+          <span>On eligible orders</span>
+        </div>
+      </div>
+      <div class="service-item">
+        <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
+        <div>
+          <strong>Safe Payments</strong>
+          <span>Secure checkout</span>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <section class="auth-section">
     <div class="auth-box" id="login">
