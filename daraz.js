@@ -59,14 +59,13 @@ document.querySelectorAll('a[href^="#"]').forEach(function (link) {
       return;
     }
 
-    const sectionId = this.getAttribute('data-nav') || href.replace('#', '');
-    const target = document.getElementById(sectionId);
-    if (!target) return;
+    const sectionId = href.replace('#', '');
+    if (!document.getElementById(sectionId)) return;
 
     e.preventDefault();
     scrollToSection(sectionId);
-    if (history.replaceState) {
-      history.replaceState(null, '', '#' + sectionId);
+    if (location.hash !== '#' + sectionId) {
+      location.hash = sectionId;
     }
   });
 });
