@@ -879,6 +879,20 @@ font-weight: 500;
 .auth-box button:hover{
     background: #e5651d;
 }
+.auth-box .dialog-close {
+    width: 36px;
+    height: 36px;
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    color: #757575;
+    font-size: 28px;
+    font-weight: 400;
+}
+.auth-box .dialog-close:hover {
+    background: #f5f5f5;
+    color: #212121;
+}
 .auth-box p{
     margin-top: 16px;
     font-size: 13px;
