@@ -48,39 +48,26 @@ function updateCartCount(delta) {
   badge.dataset.count = String(next);
 }
 
-// Navbar buttons — har button apni exact jagah par
-document.querySelectorAll('.top-navigation a[data-nav], .header-action[data-nav]').forEach(function (link) {
+document.querySelectorAll('a[href^="#"]').forEach(function (link) {
   link.addEventListener('click', function (e) {
-    e.preventDefault();
-    scrollToSection(this.getAttribute('data-nav'));
-  });
-});
+    if (this.id === 'lang-toggle') return;
 
-// Baqi # links — logo, cart, login/signup cross links
-document.querySelectorAll('a[href^="#"]:not([data-nav]):not(#lang-toggle)').forEach(function (link) {
-  link.addEventListener('click', function (e) {
-    const href = this.getAttribute('href');
-    if (href === '#' || !href) {
+    const href = this.getAttribute('href') || '';
+    if (href === '#') {
       e.preventDefault();
       showToast('This demo stays on the page.');
       return;
     }
 
-    const sectionId = href.replace('#', '');
+    const sectionId = this.getAttribute('data-nav') || href.replace('#', '');
     const target = document.getElementById(sectionId);
+    if (!target) return;
 
-    if (target) {
-      e.preventDefault();
-      scrollToSection(sectionId);
-    }
-  });
-});
-
-// Category strip links
-document.querySelectorAll('.category-strip a').forEach(function (link) {
-  link.addEventListener('click', function (e) {
     e.preventDefault();
-    scrollToSection('categories');
+    scrollToSection(sectionId);
+    if (history.replaceState) {
+      history.replaceState(null, '', '#' + sectionId);
+    }
   });
 });
 
