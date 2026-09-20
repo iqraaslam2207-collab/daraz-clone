@@ -84,12 +84,17 @@
     var badge = qs('cart-count');
     if (!list || !badge) return;
 
-    list.innerHTML = '';
+    list.textContent = '';
     var total = 0;
     cart.forEach(function (item) {
       total += item.price * item.qty;
       var li = document.createElement('li');
-      li.innerHTML = '<span>' + item.qty + ' × ' + item.title + '</span><strong>' + formatPrice(item.price * item.qty) + '</strong>';
+      var name = document.createElement('span');
+      name.textContent = item.qty + ' × ' + item.title;
+      var cost = document.createElement('strong');
+      cost.textContent = formatPrice(item.price * item.qty);
+      li.appendChild(name);
+      li.appendChild(cost);
       list.appendChild(li);
     });
 
@@ -349,10 +354,9 @@
   productCards().forEach(function (card) {
     card.addEventListener('click', function () {
       var titleNode = card.querySelector('.product-title, .product-info p, p');
-      var priceNode = card.querySelector('.sale-price, .product-info span, span');
       var title = ((titleNode && titleNode.textContent) || 'Item').replace(/\s+/g, ' ').trim();
       if (title.length > 42) title = title.slice(0, 42) + '…';
-      var price = parsePrice(priceNode && priceNode.textContent);
+      var price = parsePrice(card.textContent);
       var existing = cart.filter(function (item) { return item.title === title; })[0];
       if (existing) {
         existing.qty += 1;
