@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="Daraz">
+  <rect width="100" height="100" rx="18" fill="#ffffff"/>
+  <path fill="#f57224" d="M54 14h20v36L58 38H46V26z"/>
+  <path fill="#f57224" d="M22 38h24l12 14-12 34-22-12-8-22z"/>
+  <path fill="#ffffff" d="M36 40l18 10-18 10z"/>
+</svg>

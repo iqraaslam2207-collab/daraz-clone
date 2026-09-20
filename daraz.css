@@ -1218,27 +1218,14 @@ footer {
     }
 
     .logo-search-cart {
-        grid-template-columns: auto auto;
-        grid-template-areas:
-            "logo actions"
-            "search search";
-        gap: 12px;
+        grid-template-columns: auto minmax(0, 1fr) auto;
+        gap: 10px 12px;
         padding-bottom: 8px;
     }
 
-    .site-logo {
-        grid-area: logo;
-    }
-
-    .header-actions {
-        grid-area: actions;
-        justify-self: end;
-    }
-
-    .search-form {
-        grid-area: search;
-        width: 100%;
-        max-width: none;
+    .site-logo img {
+        height: 32px;
+        max-width: 112px;
     }
 
     .header-action span:not(.cart-badge) {
@@ -1311,5 +1298,30 @@ footer {
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
+    }
+}
+
+@media (max-width: 520px) {
+    .logo-search-cart {
+        grid-template-columns: auto auto;
+        grid-template-areas:
+            "logo actions"
+            "search search";
+        gap: 10px 12px;
+    }
+
+    .site-logo {
+        grid-area: logo;
+    }
+
+    .header-actions {
+        grid-area: actions;
+        justify-self: end;
+    }
+
+    .search-form {
+        grid-area: search;
+        width: 100%;
+        max-width: none;
     }
 }
