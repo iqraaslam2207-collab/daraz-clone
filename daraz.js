@@ -60,7 +60,11 @@ document.querySelectorAll('.top-navigation a[data-nav], .header-action[data-nav]
 document.querySelectorAll('a[href^="#"]:not([data-nav]):not(#lang-toggle)').forEach(function (link) {
   link.addEventListener('click', function (e) {
     const href = this.getAttribute('href');
-    if (href === '#') return;
+    if (href === '#' || !href) {
+      e.preventDefault();
+      showToast('This demo stays on the page.');
+      return;
+    }
 
     const sectionId = href.replace('#', '');
     const target = document.getElementById(sectionId);
@@ -134,6 +138,14 @@ document.getElementById('load-more').addEventListener('click', function () {
     product.classList.remove('load-more-hidden');
   });
   this.style.display = 'none';
+});
+
+document.querySelectorAll('.shop-all-btn').forEach(function (link) {
+  link.addEventListener('click', function (e) {
+    e.preventDefault();
+    scrollToSection('categories');
+    showToast('Showing all products');
+  });
 });
 
 // Add to cart on product click
