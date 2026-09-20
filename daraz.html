@@ -14,7 +14,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-    <link rel="stylesheet" href="daraz.css?v=4">
+    <link rel="stylesheet" href="daraz.css?v=5">
 </head>
 <body id="home">
 <header class="site-header">
@@ -46,7 +46,7 @@
                 <i class="fa-regular fa-user" aria-hidden="true"></i>
                 <span>Account</span>
             </a>
-            <a href="#flash-sale" class="header-action header-action--cart" aria-label="Shopping cart">
+            <a href="#cart" class="header-action header-action--cart" aria-label="Shopping cart">
                 <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>
                 <span class="cart-badge" id="cart-count" data-count="0"></span>
                 <span>Cart</span>
@@ -56,14 +56,14 @@
 
     <nav class="category-strip" aria-label="Shop categories">
         <div class="category-strip__inner">
-            <a href="#categories">Groceries</a>
-            <a href="#categories">Electronics</a>
-            <a href="#categories">Fashion</a>
-            <a href="#categories">Home &amp; Living</a>
-            <a href="#categories">Health &amp; Beauty</a>
-            <a href="#categories">Sports &amp; Outdoor</a>
-            <a href="#categories">Babies &amp; Toys</a>
-            <a href="#categories">Automotive</a>
+            <a href="#just-for-you" data-filter="biryani grocery food">Groceries</a>
+            <a href="#flash-sale" data-filter="earbuds headset headphone">Electronics</a>
+            <a href="#just-for-you" data-filter="tracksuit fashion eyeglasses">Fashion</a>
+            <a href="#just-for-you" data-filter="mattress cleaner kitchen">Home &amp; Living</a>
+            <a href="#flash-sale" data-filter="shampoo conditioner">Health &amp; Beauty</a>
+            <a href="#flash-sale" data-filter="sneakers bata">Sports &amp; Outdoor</a>
+            <a href="#categories" data-filter="toy">Babies &amp; Toys</a>
+            <a href="#categories" data-filter="automotive">Automotive</a>
         </div>
     </nav>
 </header>
@@ -383,7 +383,7 @@
                 </div>
             </div>
         </article>
-        <article class="featured-product load-more-hidden">
+        <article class="featured-product load-more-hidden" data-product>
             <img src="https://img.drz.lazcdn.com/static/pk/p/fdbccb503d7bb1235c8a2633841aac70.jpg_400x400q80.jpg_.webp" alt="Anti glare eyeglasses">
             <div class="product-info">
                 <p>Transparent Lightweight Latest In Fashion 2023 Anti Glare UV Ray Eyeglasses For Men/Women</p>
@@ -398,7 +398,7 @@
                 </div>
             </div>
         </article>
-        <article class="featured-product load-more-hidden">
+        <article class="featured-product load-more-hidden" data-product>
             <img src="https://img.drz.lazcdn.com/static/pk/p/116dd22c0ce3dafa1b7d09570b2e2244.png_400x400q80.png_.webp" alt="Fashion eyeglasses">
             <div class="product-info">
                 <p>Transparent Lightweight Latest In Fashion 2023 Anti Glare UV Ray Eyeglasses For Men/Women</p>
@@ -413,7 +413,7 @@
                 </div>
             </div>
         </article>
-        <article class="featured-product load-more-hidden">
+        <article class="featured-product load-more-hidden" data-product>
             <img src="https://img.drz.lazcdn.com/static/pk/p/2fc68f0ef3deb770811459360315fa62.jpg_400x400q80.jpg_.webp" alt="Fashion eyeglasses">
             <div class="product-info">
                 <p>Transparent Lightweight Latest In Fashion 2023 Anti Glare UV Ray Eyeglasses For Men/Women</p>
@@ -428,7 +428,7 @@
                 </div>
             </div>
         </article>
-        <article class="featured-product load-more-hidden">
+        <article class="featured-product load-more-hidden" data-product>
             <img src="https://img.drz.lazcdn.com/static/pk/p/63f72c07534f45d4126c7dd4623aa1ae.png_400x400q80.png_.webp" alt="Men tracksuit">
             <div class="product-info">
                 <p>Black and white fired printed premium quality 2pc tracksuit tshirt + short track for men</p>
@@ -483,19 +483,21 @@
   <section class="auth-section">
     <div class="auth-box" id="login">
       <h3>Login to Daraz</h3>
+      <button type="button" class="dialog-close" data-close="auth" aria-label="Close login">&times;</button>
       <form id="login-form">
-        <input type="email" placeholder="Email or Phone" required>
-        <input type="password" placeholder="Password" required>
+        <input type="text" name="email" placeholder="Email or Phone" required>
+        <input type="password" name="password" placeholder="Password" required>
         <button type="submit">LOGIN</button>
       </form>
       <p>New to Daraz? <a href="#signup">Sign Up here</a></p>
     </div>
     <div class="auth-box" id="signup">
       <h3>Create Your Account</h3>
+      <button type="button" class="dialog-close" data-close="auth" aria-label="Close sign up">&times;</button>
       <form id="signup-form">
-        <input type="text" placeholder="Full Name" required>
-        <input type="email" placeholder="Email or Phone" required>
-        <input type="password" placeholder="Create Password" required>
+        <input type="text" name="name" placeholder="Full Name" required>
+        <input type="text" name="email" placeholder="Email or Phone" required>
+        <input type="password" name="password" placeholder="Create Password" required>
         <button type="submit">SIGN UP</button>
       </form>
       <p>Already have an account? <a href="#login">Login here</a></p>
@@ -602,6 +604,27 @@
     </div>
   </footer>
 
-  <script src="daraz.js?v=4"></script>
+
+<aside class="cart-drawer" id="cart-drawer" hidden>
+  <div class="cart-drawer__head">
+    <h3>My Cart</h3>
+    <button type="button" class="dialog-close" data-close="cart" aria-label="Close cart">&times;</button>
+  </div>
+  <ul class="cart-drawer__list" id="cart-items"></ul>
+  <p class="cart-drawer__empty" id="cart-empty">Your cart is empty. Tap a product to add it.</p>
+  <div class="cart-drawer__foot">
+    <p>Total: <strong id="cart-total">Rs.0</strong></p>
+    <button type="button" id="cart-checkout">CHECKOUT</button>
+  </div>
+</aside>
+<div class="site-dialog" id="info-dialog" hidden>
+  <div class="site-dialog__panel">
+    <button type="button" class="dialog-close" data-close="info" aria-label="Close">&times;</button>
+    <h3 id="info-title"></h3>
+    <p id="info-body"></p>
+  </div>
+</div>
+<div class="dialog-backdrop" id="dialog-backdrop" hidden></div>
+  <script src="daraz.js?v=5"></script>
 </body>
 </html>
