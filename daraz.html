@@ -14,7 +14,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-    <link rel="stylesheet" href="daraz.css?v=8">
+    <link rel="stylesheet" href="daraz.css?v=15">
 </head>
 <body id="home">
 <header class="site-header">
@@ -30,7 +30,7 @@
     </nav>
     <div class="logo-search-cart">
         <a href="#home" class="site-logo" aria-label="Daraz home">
-            <img src="daraz-logo.png" alt="Daraz" width="127" height="40">
+            <img src="https://lzd-img-global.slatic.net/us/domino/3b870cb043c7f8a9741cbf66329e294e.png" alt="Daraz" width="135" height="40">
         </a>
 
         <form id="search-form" action="#" method="get" class="search-form" role="search">
@@ -42,34 +42,39 @@
         </form>
 
         <div class="header-actions">
-            <a href="#login" class="header-action" data-nav="login" aria-label="Account">
-                <i class="fa-regular fa-user" aria-hidden="true"></i>
-                <span>Account</span>
-            </a>
             <a href="#cart" class="header-action header-action--cart" aria-label="Shopping cart">
                 <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>
                 <span class="cart-badge" id="cart-count" data-count="0"></span>
-                <span>Cart</span>
             </a>
         </div>
     </div>
-
-    <nav class="category-strip" aria-label="Shop categories">
-        <div class="category-strip__inner">
-            <a href="#flash-sale" data-filter="biryani grocery food">Groceries</a>
-            <a href="#flash-sale" data-filter="earbuds headset headphone">Electronics</a>
-            <a href="#just-for-you" data-filter="tracksuit fashion eyeglasses">Fashion</a>
-            <a href="#just-for-you" data-filter="mattress cleaner kitchen">Home &amp; Living</a>
-            <a href="#flash-sale" data-filter="shampoo conditioner">Health &amp; Beauty</a>
-            <a href="#flash-sale" data-filter="sneakers bata">Sports &amp; Outdoor</a>
-            <a href="#categories" data-open-category="Outdoor Toys">Babies &amp; Toys</a>
-            <a href="#categories" data-open-category="Scooters">Automotive</a>
+    <div class="categories-bar" id="categories-bar">
+        <div class="categories-bar__inner">
+            <button type="button" class="categories-toggle" id="categories-toggle" aria-expanded="false" aria-controls="categories-menu">
+                Categories
+                <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+            </button>
+            <nav class="categories-menu" id="categories-menu" aria-label="Shop categories" hidden>
+                <a href="#flash-sale" data-filter="face mask packs">Groceries &amp; Pets</a>
+                <a href="#flash-sale" data-filter="shampoo soap keratin">Health &amp; Beauty</a>
+                <a href="#just-for-you" data-filter="tee tracksuit sandal pajama">Men's Fashion</a>
+                <a href="#just-for-you" data-filter="pajama makeup">Women's Fashion</a>
+                <a href="#categories" data-open-category="Christening">Mother &amp; Baby</a>
+                <a href="#just-for-you" data-filter="fan slippers organizer">Home &amp; Lifestyle</a>
+                <a href="#flash-sale" data-filter="earbuds bluetooth trimmer">Electronic Devices</a>
+                <a href="#categories" data-open-category="SIM Tools">Electronic Accessories</a>
+                <a href="#flash-sale" data-filter="dawlance atmos inverter">TV &amp; Home Appliances</a>
+                <a href="#categories" data-open-category="Scooters">Sports &amp; Outdoor</a>
+                <a href="#categories" data-open-category="Headbands">Watches, Bags &amp; Jewellery</a>
+                <a href="#categories" data-open-category="Scooters">Automotive &amp; Motorbike</a>
+            </nav>
         </div>
-    </nav>
+    </div>
 </header>
 
 <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
 
+<div class="page-home" id="page-home">
 <section class="slideshow-app-container">
     <div class="slide-container">
          <input type="radio" name="slider" id="slide1" checked>
@@ -77,13 +82,13 @@
          <input type="radio" name="slider" id="slide3">
 
          <figure class="slide s1">
-             <img src="IMAGE1.jpg" alt="Daraz banner slide 1">
+             <img src="https://img.lazcdn.com/us/domino/947cfc0e-a6ec-4c42-b0e9-5ca7b9be607c_PK-1976-688.jpg_2200x2200q80.jpg" alt="Fashion up to 70% off">
          </figure>
          <figure class="slide s2">
-             <img src="IMAGE2.jpg" alt="Daraz banner slide 2">
+             <img src="https://img.lazcdn.com/us/domino/1dfd81b0-b0ac-4e20-a61c-49ff6a68c7cb_PK-1976-688.jpg_2200x2200q80.jpg" alt="Daraz banner slide 2">
          </figure>
          <figure class="slide s3">
-             <img src="IMAGE3.jpg" alt="Daraz banner slide 3">
+             <img src="https://img.lazcdn.com/us/domino/a05d49bb-420b-4181-bf63-4d3b8d50d4b1_PK-1976-688.jpg_2200x2200q80.jpg" alt="Daraz banner slide 3">
          </figure>
 
          <nav class="slide-label" aria-label="Slideshow navigation">
@@ -101,115 +106,85 @@
              <label for="slide3" aria-label="Slide 3"></label>
          </div>
     </div>
-
-    <div class="app-container" id="save-more-app">
-        <div class="logo-text">
-            <img src="https://img.lazcdn.com/us/domino/1ee015d6a5c62fd0339c88c657c1c183.jpg_120x120q80.jpg" alt="Daraz App icon">
-            <p>Download the App</p>
-        </div>
-        <div class="app-feature">
-            <p><i class="fa-solid fa-star"></i><span>4.8 Rated</span></p>
-            <p id="texts">Download the App</p>
-            <div class="icon-text">
-                <img src="https://img.lazcdn.com/g/tps/imgextra/i2/O1CN01n3PMa828kJZVuCbPp_!!6000000007970-2-tps-72-72.png_150x150q80.png" alt="Free Delivery icon">
-                <p>Free <br> Delivery</p>
-            </div>
-            <div class="icon-text">
-                <img src="https://img.lazcdn.com/g/tps/imgextra/i3/O1CN01J03SMW1lebTE7xkaN_!!6000000004844-2-tps-72-72.png_150x150q80.png" alt="Exclusive Vouchers icon">
-                <p>Exclusive <br> Vouchers</p>
-            </div>
-        </div>
-        <div class="qr-appstore">
-            <img src="https://img.drz.lazcdn.com/g/tps/imgextra/i2/O1CN01jHjmpl1pxcRVgFrYS_!!6000000005427-0-tps-150-150.jpg_360x360q80.jpg" alt="Daraz App QR code">
-            <div class="apps">
-                <img src="https://img.lazcdn.com/g/tps/imgextra/i4/O1CN01uAl8kB1wEv2DNjdhB_!!6000000006277-2-tps-125-36.png" alt="Download on App Store">
-                <img src="https://img.lazcdn.com/g/tps/imgextra/i1/O1CN01QJGFfc1S0mKngu4rQ_!!6000000002185-2-tps-125-36.png" alt="Get it on Google Play">
-            </div>
-        </div>
-        <p>Download the App Now!</p>
-    </div>
 </section>
 <section class="product-container flash-sale" id="flash-sale">
     <h4 class="section-title">Flash Sale</h4>
     <div class="flash-sale-box">
         <div class="product-top">
             <div class="sale-heading">
-                <p class="sale-heading__title"><i class="fa-solid fa-bolt" aria-hidden="true"></i> On Sale Now</p>
+                <p class="sale-heading__title">On Sale Now</p>
                 <div class="sale-timer-wrap">
                     <span class="sale-timer-label">Ending in</span>
-                    <span class="sale-timer" id="flash-timer" aria-live="polite">00:00:00</span>
+                    <div class="sale-timer" id="flash-timer" aria-live="polite">
+                        <span class="sale-timer__box" data-unit="h">05</span>
+                        <span class="sale-timer__sep">:</span>
+                        <span class="sale-timer__box" data-unit="m">42</span>
+                        <span class="sale-timer__sep">:</span>
+                        <span class="sale-timer__box" data-unit="s">18</span>
+                    </div>
                 </div>
             </div>
-            <a href="#categories" class="shop-all-btn">SHOP ALL PRODUCTS</a>
+            <a href="#just-for-you" class="shop-all-btn">SHOP ALL PRODUCTS</a>
         </div>
         <div class="product-row">
         <article class="product-card" data-product>
             <div class="product-card__media">
-                <span class="product-badge product-badge--mall">Mall</span>
-                <img src="https://img.drz.lazcdn.com/static/pk/p/2d18873962775f2051bf3b5b334deebb.jpg_400x400q80.jpg" alt="Bluetooth earbuds">
+                <img src="https://img.drz.lazcdn.com/static/pk/p/8dd52ff2ae3e727ef5fb9e12439cae63.png_400x400q80.png" alt="Dawlance Atmos Cool Inverter AC">
             </div>
             <div class="product-info">
-                <p class="product-title">M10 , A6s , F2 earbuds Headphones,Handfree,EarPhone, Bluetooth Neckband Magnetic Earphones Sport Running Earbuds Waterproof Bluetooth 5.2 Headset With Mic, SM Trader</p>
-                <p class="product-price"><span class="sale-price">Rs.444</span></p>
-                <p class="product-discount"><del class="old-price">Rs.999</del> <span class="discount-badge">-56%</span></p>
-                <p class="product-sold">1.2k sold</p>
+                <p class="product-title">ATMOS COOL INVERTER 1.5 T3 Dawlance</p>
+                <p class="product-price"><span class="sale-price">Rs.120,831</span></p>
+                <p class="product-discount"><del class="old-price">Rs.127,900</del> <span class="discount-badge">-6%</span></p>
             </div>
         </article>
          <article class="product-card" data-product>
             <div class="product-card__media">
-                <img src="https://img.drz.lazcdn.com/static/pk/p/5d2ff5fbcec846566c97ce1be13dcb6e.png_400x400q80.png" alt="National Bombay Biryani">
+                <img src="https://img.drz.lazcdn.com/static/pk/p/c5176d6a7e45451de5841509ebc7c29c.png_400x400q80.png" alt="Set and Touch Keratin Repair Shampoo">
             </div>
             <div class="product-info">
-                <p class="product-title">National Bombay Biryani Karachi Khaas 70g</p>
-                <p class="product-price"><span class="sale-price">Rs.123</span></p>
-                <p class="product-discount"><del class="old-price">Rs.150</del> <span class="discount-badge">-18%</span></p>
-                <span class="product-badge product-badge--shipping">Free Shipping</span>
+                <p class="product-title">Set &amp; Touch Keratin Repair Shampoo Sachet 4ml Pack of 36</p>
+                <p class="product-price"><span class="sale-price">Rs.157</span></p>
+                <p class="product-discount"><del class="old-price">Rs.180</del> <span class="discount-badge">-13%</span></p>
             </div>
         </article>
          <article class="product-card" data-product>
             <div class="product-card__media">
-                <img src="https://img.drz.lazcdn.com/static/pk/p/8fbd60d21ae94bf205274af96a6d4412.jpg_400x400q80.jpg" alt="Wireless Bluetooth Headset">
+                <img src="https://img.drz.lazcdn.com/static/pk/p/324a6d0043999a4d6ea08b8dd363bac5.jpg_400x400q80.jpg" alt="Rosemary leaves">
             </div>
             <div class="product-info">
-                <p class="product-title">Wireless Bluetooth Headset 5.3 Bluetooth Protocol Earplug Type Strong Endurance Gaming Competitive Headphones TWS Running Earbuds</p>
-                <p class="product-price"><span class="sale-price">Rs.799</span></p>
-                <p class="product-discount"><del class="old-price">Rs.999</del> <span class="discount-badge">-20%</span></p>
-                <p class="product-sold">856 sold</p>
+                <p class="product-title">Rosemary Leaves / Leaf Organic 100 Gram + 2 Free Bottles Spray Bottle + Comb Bottle</p>
+                <p class="product-price"><span class="sale-price">Rs.379</span></p>
+                <p class="product-discount"><del class="old-price">Rs.399</del> <span class="discount-badge">-5%</span></p>
             </div>
         </article>
          <article class="product-card" data-product>
             <div class="product-card__media">
-                <span class="product-badge product-badge--mall">Mall</span>
-                <img src="https://img.drz.lazcdn.com/static/pk/p/9df4998c0b962c7f21252b577fba5057.png_400x400q80.png" alt="Meclay London Shampoo">
+                <img src="https://img.drz.lazcdn.com/static/pk/p/a3301931ee7abc753db1b4322a82adc5.jpg_400x400q80.jpg" alt="Capri Glow soap">
             </div>
             <div class="product-info">
-                <p class="product-title">Meclay London Thick & Dense Shampoo 660ml + Conditioner 180ml Pair</p>
-                <p class="product-price"><span class="sale-price">Rs.1,664</span></p>
-                <p class="product-discount"><del class="old-price">Rs.1,820</del> <span class="discount-badge">-9%</span></p>
-                <span class="product-badge product-badge--shipping">Free Shipping</span>
+                <p class="product-title">Capri Soap Family Pack Glow-Blue (150g)</p>
+                <p class="product-price"><span class="sale-price">Rs.135</span></p>
+                <p class="product-discount"><del class="old-price">Rs.180</del> <span class="discount-badge">-25%</span></p>
             </div>
         </article>
          <article class="product-card" data-product>
             <div class="product-card__media">
-                <img src="https://img.drz.lazcdn.com/static/pk/p/65a78ea15e58a54f32578cace69ca56e.jpg_400x400q80.jpg" alt="Bata Men Sneakers">
+                <img src="https://img.drz.lazcdn.com/static/pk/p/b3af1348df2133ea3236b7c61b485b3f.jpg_400x400q80.jpg" alt="Vintage T9 hair trimmer">
             </div>
             <div class="product-info">
-                <p class="product-title">Bata - Men Sneakers For Men</p>
-                <p class="product-price"><span class="sale-price">Rs.1,499</span></p>
-                <p class="product-discount"><del class="old-price">Rs.1,999</del> <span class="discount-badge">-25%</span></p>
-                <p class="product-sold">2.4k sold</p>
+                <p class="product-title">Vintage T9 Hair Trimmer for Men – Premium Metal Body, Cordless USB Rechargeable</p>
+                <p class="product-price"><span class="sale-price">Rs.530</span></p>
+                <p class="product-discount"><del class="old-price">Rs.1,699</del> <span class="discount-badge">-69%</span></p>
             </div>
         </article>
          <article class="product-card" data-product>
             <div class="product-card__media">
-                <span class="product-badge product-badge--mall">Mall</span>
-                <img src="https://img.drz.lazcdn.com/static/pk/p/761c76decc92bd48fdf328b729c74757.jpg_400x400q80.jpg" alt="MoltyFoam Mattress">
+                <img src="https://img.drz.lazcdn.com/static/pk/p/3c4fdd215dac38a3294a9c5bfc1a1050.png_400x400q80.png" alt="Nose blackhead remover strips">
             </div>
             <div class="product-info">
-                <p class="product-title">Be Mattress in a Box by MoltyFoam</p>
-                <p class="product-price"><span class="sale-price">Rs.27,600</span></p>
-                <p class="product-discount"><del class="old-price">Rs.34,500</del> <span class="discount-badge">-20%</span></p>
-                <span class="product-badge product-badge--shipping">Free Shipping</span>
+                <p class="product-title">10pcs Nose Blackhead Remover Strips Mask Skin Care Shrink Pore Acne Treatment</p>
+                <p class="product-price"><span class="sale-price">Rs.181</span></p>
+                <p class="product-discount"><del class="old-price">Rs.399</del> <span class="discount-badge">-55%</span></p>
             </div>
         </article>
     </div>
@@ -219,72 +194,70 @@
     <h4 class="section-title">Categories</h4>
     <div class="categories-card">
     <div class="categoris">
-        
- <div class="collection">
-            <img src="https://img.drz.lazcdn.com/static/pk/p/aab6af84f99e343e628515432077c7ea.jpg_170x170q80.jpg" alt="">
-       <p>Anklets</p>
-        </div>
-        <div class="collection"> 
-<img src="https://img.drz.lazcdn.com/g/kf/Sbc4fc91729114f7499c78625a6e05f458.jpg_170x170q80.jpg" alt="">
-<p>Sport Backpacks</p>
+        <div class="collection">
+            <img src="https://img.drz.lazcdn.com/static/pk/p/5b9c5c1e299ce3653c101242e8a840b8.jpg_170x170q80.jpg" alt="Face Mask and Packs">
+            <p>Face Mask &amp; Packs</p>
         </div>
         <div class="collection">
-<img src="https://img.drz.lazcdn.com/static/pk/p/e1e9351524326fa4800fc58fedb60ddb.jpg_170x170q80.jpg" alt="">
-<p>Pasta, Noodle & Pizza Tools</p>
-</div>
-        <div class="collection">
-            <img src="https://img.drz.lazcdn.com/static/pk/p/bca7e03bff37ef8ed9e8013ba8303e9e.jpg_170x170q80.jpg" alt="">
-<p>SIM Tools</p>
-</div>
-        <div class="collection">
-            <img src="https://img.drz.lazcdn.com/static/pk/p/331525eb29c67bba7d110b6b6858ec5d.jpg_170x170q80.jpg" alt="">
-<p>Outdoor Toys</p>
-</div>
-        <div class="collection">
-<img src="https://img.drz.lazcdn.com/static/pk/p/e0faa49201d2794b11803838486bebeb.jpg_170x170q80.jpg" alt="">
-<p>Hoodies & Sweatshirts</p>
-</div>
-        <div class="collection">
-            <img src="https://img.drz.lazcdn.com/g/kf/Sba70d29a30964d4fae0f95e6047d324dc.jpg_170x170q80.jpg" alt="">
-<p>Mini Ovens</p>
-</div>
-        <div class="collection">
-<img src="https://img.drz.lazcdn.com/static/pk/p/c1d8eb2731f3c450fbddf61ab5962e8d.jpg_170x170q80.jpg" alt="">
-<p>Screen Protectors</p>
-</div> 
-
-<div class="collection">
-            <img src="https://img.drz.lazcdn.com/static/pk/p/b9e964a5ef75a932aa4b1918e10734d2.jpg_170x170q80.jpg" alt="">
-       <p>Jackets</p>
-        </div>
-        <div class="collection"> 
-<img src="https://img.drz.lazcdn.com/static/pk/p/280fff6628db6118df5bad3cbc34b348.jpg_170x170q80.jpg" alt="">
-<p>Closet Organisers</p>
+            <img src="https://img.drz.lazcdn.com/static/pk/p/5b6c581ce826c364e02d269820be63d3.jpg_170x170q80.jpg" alt="3D Printers">
+            <p>3D Printers</p>
         </div>
         <div class="collection">
-<img src="https://img.drz.lazcdn.com/static/pk/p/db1aa1c8321197831a2599196367d516.jpg_170x170q80.jpg" alt="">
-<p>3D Printers</p>
-</div>
+            <img src="https://img.drz.lazcdn.com/static/pk/p/f51f87f93e438693b8de83b8f9842e7f.jpg_170x170q80.jpg" alt="Pasta tools">
+            <p>Pasta, Noodle &amp; Pizza Tools</p>
+        </div>
         <div class="collection">
-            <img src="https://img.drz.lazcdn.com/g/kf/S118af0a346c14fd7b0fb810228ff360eE.jpg_170x170q80.jpg" alt="">
-<p> Dining Sets</p>
-</div>
+            <img src="https://img.drz.lazcdn.com/static/pk/p/c89f0ef857630d9ef8bf459890da9261.jpg_170x170q80.jpg" alt="SIM Tools">
+            <p>SIM Tools</p>
+        </div>
         <div class="collection">
-            <img src="https://img.drz.lazcdn.com/static/pk/p/7d53b4e0bb3139ba33ee489819c2cf84.jpg_170x170q80.jpg" alt="">
+            <img src="https://img.drz.lazcdn.com/static/pk/p/c9eb087a13da0bad292640edad67a93f.jpg_170x170q80.jpg" alt="Toy Boxes">
+            <p>Toy Boxes &amp; Organisers</p>
+        </div>
+        <div class="collection">
+            <img src="https://img.drz.lazcdn.com/static/pk/p/93786c6733fd296976a026980f98e50a.jpg_170x170q80.jpg" alt="Pet clippers">
+            <p>Dog &amp; Cat Electric Clippers</p>
+        </div>
+        <div class="collection">
+            <img src="https://img.drz.lazcdn.com/g/kf/Sf9f6ffc57258447caa76fcc8c0d7f279a.jpg_170x170q80.jpg" alt="Dining Sets">
+            <p>Dining Sets</p>
+        </div>
+        <div class="collection">
+            <img src="https://img.drz.lazcdn.com/static/pk/p/560418c30afdaf7be78373530ba410fc.jpg_170x170q80.jpg" alt="Microphones">
             <p>Microphones</p>
         </div>
         <div class="collection">
-            <img src="https://img.drz.lazcdn.com/static/pk/p/92f22f3eb5a50be72f7c104bde6c35e7.jpg_170x170q80.jpg" alt="">
-            <p>Leashes & Harnesses</p>
+            <img src="https://img.drz.lazcdn.com/static/pk/p/79f854f8a771471cd05d314db18482bf.png_170x170q80.png" alt="Headbands">
+            <p>Headbands</p>
         </div>
         <div class="collection">
-            <img src="https://img.drz.lazcdn.com/static/pk/p/d94eca224d51842751537a55eb5c06e3.jpg_170x170q80.jpg" alt="">
+            <img src="https://img.drz.lazcdn.com/g/kf/S83f01bcc17f84e1f8022e7f856d4b812B.jpg_170x170q80.jpg" alt="Christening">
+            <p>Christening</p>
+        </div>
+        <div class="collection">
+            <img src="https://img.drz.lazcdn.com/static/pk/p/9040967a4d271ece0042f67a6cf8c743.jpg_170x170q80.jpg" alt="Leashes">
+            <p>Leashes &amp; Harnesses</p>
+        </div>
+        <div class="collection">
+            <img src="https://img.drz.lazcdn.com/static/pk/p/d870cffbbe520860691affe40309fe6a.jpg_170x170q80.jpg" alt="Scooters">
             <p>Scooters</p>
         </div>
         <div class="collection">
-            <img src="https://img.drz.lazcdn.com/static/pk/p/1f834c61ccd779c9ab7fdaa5cf0e478e.jpg_170x170q80.jpg" alt="">
+            <img src="https://img.drz.lazcdn.com/static/pk/p/73b1c17b6eec57cdbe2ee0d03b57841d.jpg_170x170q80.jpg" alt="Donate to Educate">
             <p>Donate to Educate</p>
-        </div> 
+        </div>
+        <div class="collection">
+            <img src="https://img.drz.lazcdn.com/static/pk/p/cf1b8ba489f48c8ab76f18b9d058e236.jpg_170x170q80.jpg" alt="Coloring and Drawing">
+            <p>Coloring &amp; Drawing</p>
+        </div>
+        <div class="collection">
+            <img src="https://img.drz.lazcdn.com/static/pk/p/f6d4ed6eef27c2008f5c73268124fb66.jpg_170x170q80.jpg" alt="Heatsinks">
+            <p>Heatsinks</p>
+        </div>
+        <div class="collection">
+            <img src="https://img.drz.lazcdn.com/static/pk/p/d1bf2577ab7b4e894497da070b79619c.jpg_170x170q80.jpg" alt="Injury Support">
+            <p>Injury Support and Braces</p>
+        </div>
     </div>
     </div>
 </section>
@@ -294,152 +267,182 @@
     <h4 class="section-title">Just For You</h4>
     <div class="feature-products">
         <article class="featured-product" data-product>
-            <img src="https://img.drz.lazcdn.com/static/pk/p/deb3a6eb570b23b579f19c53e6bd54fc.jpg_400x400q80.jpg" alt="Finish Dishwasher Tablets">
+            <img src="https://img.drz.lazcdn.com/g/kf/S5517f8f955d04d6fbda0e3118e740198S.jpg_400x400q80.jpg" alt="Printed summer tees">
             <div class="product-info">
-                <p>Finish Dishwasher Tablets Ultimate Plus All In One 33 Tab</p>
-                <p><span>Rs.7,299</span></p>
-                <div class="rating">
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <span>(7)</span>
-                </div>
-            </div>
-        </article>
-        <article class="featured-product" data-product>
-            <img src="https://img.drz.lazcdn.com/g/kf/S5422162cd25b48a5a134578f48c9bcb87.jpg_400x400q80.jpg" alt="Kitchen cleaning product">
-            <div class="product-info">
-                <p>Premium Kitchen Cleaning Bundle - Multi Surface Cleaner</p>
-                <p><span>Rs.1,299</span></p>
-                <div class="rating">
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star-half-stroke"></i>
-                    <span>(42)</span>
-                </div>
-            </div>
-        </article>
-        <article class="featured-product" data-product>
-            <img src="https://img.drz.lazcdn.com/static/pk/p/2ca2015bd30ed6d0b9e6c92f9790c898.jpg_400x400q80.jpg" alt="Home essentials pack">
-            <div class="product-info">
-                <p>Daily Home Essentials Combo Pack - Best Value Deal</p>
-                <p><span>Rs.899</span></p>
-                <div class="rating">
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <span>(18)</span>
-                </div>
-            </div>
-        </article>
-        <article class="featured-product" data-product>
-            <img src="https://img.drz.lazcdn.com/static/pk/p/640b173ad3acdaa435c6f7dfc190891a.jpg_400x400q80.jpg" alt="Personal care product">
-            <div class="product-info">
-                <p>Organic Personal Care Set - Shampoo and Conditioner</p>
-                <p><span>Rs.2,450</span></p>
+                <p>BURNOUT.PK NEW TRENDY SUMMER COLLECTION HALF SLEEVE PRINTED TEES</p>
+                <p><span>Rs.444</span> <em>-44%</em></p>
                 <div class="rating">
                     <i class="fa-solid fa-star"></i>
                     <i class="fa-solid fa-star"></i>
                     <i class="fa-solid fa-star"></i>
                     <i class="fa-solid fa-star"></i>
                     <i class="fa-regular fa-star"></i>
-                    <span>(31)</span>
+                    <span>(52)</span>
                 </div>
             </div>
         </article>
         <article class="featured-product" data-product>
-            <img src="https://img.drz.lazcdn.com/static/pk/p/7ee8232d887e9d55fef0641ef929201b.jpg_400x400q80.jpg" alt="Fashion accessories">
+            <img src="https://img.drz.lazcdn.com/static/pk/p/4a0ffceb5cef288fb61c9013d63d3dc4.jpg_400x400q80.jpg" alt="Mini wireless earbuds">
             <div class="product-info">
-                <p>Trendy Fashion Accessories Pack for Men and Women</p>
-                <p><span>Rs.599</span></p>
+                <p>Mini Wireless Bluetooth Earbuds In-Ear Stereo Headphones with Noise Cancellation</p>
+                <p><span>Rs.241</span> <em>-76%</em></p>
                 <div class="rating">
                     <i class="fa-solid fa-star"></i>
                     <i class="fa-solid fa-star"></i>
                     <i class="fa-solid fa-star"></i>
                     <i class="fa-solid fa-star"></i>
                     <i class="fa-solid fa-star"></i>
-                    <span>(56)</span>
+                    <span>(12)</span>
                 </div>
             </div>
         </article>
         <article class="featured-product" data-product>
-            <img src="https://img.drz.lazcdn.com/static/pk/p/91c4daf8379264a41356357c6d923d41.jpg_400x400q80.jpg" alt="Electronics gadget">
+            <img src="https://img.drz.lazcdn.com/static/pk/p/84514d48bbafb096358fb8db993a2cf3.jpg_400x400q80.jpg" alt="Bluetooth hands-free">
             <div class="product-info">
-                <p>Portable Mini USB Fan - Rechargeable Desktop Cooler</p>
-                <p><span>Rs.349</span></p>
+                <p>Universal Bluetooth Hands-Free Earphone with Mic for All Smartphones</p>
+                <p><span>Rs.249</span> <em>-75%</em></p>
                 <div class="rating">
                     <i class="fa-solid fa-star"></i>
                     <i class="fa-solid fa-star"></i>
                     <i class="fa-solid fa-star"></i>
                     <i class="fa-solid fa-star"></i>
                     <i class="fa-solid fa-star-half-stroke"></i>
-                    <span>(89)</span>
+                    <span>(705)</span>
                 </div>
             </div>
         </article>
-        <article class="featured-product load-more-hidden" data-product>
-            <img src="https://img.drz.lazcdn.com/static/pk/p/fdbccb503d7bb1235c8a2633841aac70.jpg_400x400q80.jpg" alt="Anti glare eyeglasses">
+        <article class="featured-product" data-product>
+            <img src="https://img.drz.lazcdn.com/static/pk/p/559b5916faa20c86010492ed06acebe6.jpg_400x400q80.jpg" alt="Cotton pajama set">
             <div class="product-info">
-                <p>Transparent Lightweight Latest In Fashion 2023 Anti Glare UV Ray Eyeglasses For Men/Women</p>
-                <p><span>Rs.7,299</span></p>
+                <p>Girls (7–14) &amp; Women (S–XL) Soft Cotton Jersey Pajama Set</p>
+                <p><span>Rs.799</span> <em>-60%</em></p>
+                <div class="rating">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                    <span>(144)</span>
+                </div>
+            </div>
+        </article>
+        <article class="featured-product" data-product>
+            <img src="https://img.drz.lazcdn.com/static/pk/p/2d46b2f644d4d82ff4c0c2a551884c94.jpg_400x400q80.jpg" alt="Camlo sandals">
+            <div class="product-info">
+                <p>Camlo Sandals For Men Summer Synthetic Leather Casual Trendy Style</p>
+                <p><span>Rs.389</span> <em>-65%</em></p>
                 <div class="rating">
                     <i class="fa-solid fa-star"></i>
                     <i class="fa-solid fa-star"></i>
                     <i class="fa-solid fa-star"></i>
                     <i class="fa-solid fa-star"></i>
                     <i class="fa-solid fa-star"></i>
-                    <span>(7)</span>
+                    <span>(133)</span>
+                </div>
+            </div>
+        </article>
+        <article class="featured-product" data-product>
+            <img src="https://img.drz.lazcdn.com/static/pk/p/107e9acadca216b2565c97de00c0d46e.jpg_400x400q80.jpg" alt="Mini USB fan">
+            <div class="product-info">
+                <p>Mini Fan Rechargeable Handheld Desktop USB Fan Electric Portable Mini Desk Fan</p>
+                <p><span>Rs.349</span> <em>-46%</em></p>
+                <div class="rating">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star-half-stroke"></i>
+                    <span>(419)</span>
                 </div>
             </div>
         </article>
         <article class="featured-product load-more-hidden" data-product>
-            <img src="https://img.drz.lazcdn.com/static/pk/p/116dd22c0ce3dafa1b7d09570b2e2244.png_400x400q80.png" alt="Fashion eyeglasses">
+            <img src="https://img.drz.lazcdn.com/static/pk/p/cbf066edc2cdd3d256a56c89423be6b6.jpg_400x400q80.jpg" alt="Bathroom slippers">
             <div class="product-info">
-                <p>Transparent Lightweight Latest In Fashion 2023 Anti Glare UV Ray Eyeglasses For Men/Women</p>
-                <p><span>Rs.7,299</span></p>
+                <p>Washroom Bathroom Slippers Chappal for Men &amp; Women, Non-Slip Quick Dry</p>
+                <p><span>Rs.329</span> <em>-53%</em></p>
                 <div class="rating">
                     <i class="fa-solid fa-star"></i>
                     <i class="fa-solid fa-star"></i>
                     <i class="fa-solid fa-star"></i>
                     <i class="fa-solid fa-star"></i>
                     <i class="fa-solid fa-star"></i>
-                    <span>(7)</span>
+                    <span>(819)</span>
                 </div>
             </div>
         </article>
         <article class="featured-product load-more-hidden" data-product>
-            <img src="https://img.drz.lazcdn.com/static/pk/p/2fc68f0ef3deb770811459360315fa62.jpg_400x400q80.jpg" alt="Fashion eyeglasses">
+            <img src="https://img.drz.lazcdn.com/g/kf/S43acc2f29a7b4e9ab5b6753df5e7d648E.jpg_400x400q80.jpg" alt="Makeup brushes">
             <div class="product-info">
-                <p>Transparent Lightweight Latest In Fashion 2023 Anti Glare UV Ray Eyeglasses For Men/Women</p>
-                <p><span>Rs.209</span></p>
+                <p>WANTER 13 Pcs Makeup Brushes Set Soft Hair Loose Powder Eyeshadow Concealer</p>
+                <p><span>Rs.318</span> <em>-60%</em></p>
                 <div class="rating">
                     <i class="fa-solid fa-star"></i>
                     <i class="fa-solid fa-star"></i>
                     <i class="fa-solid fa-star"></i>
                     <i class="fa-solid fa-star"></i>
                     <i class="fa-solid fa-star"></i>
-                    <span>(130)</span>
+                    <span>(8885)</span>
                 </div>
             </div>
         </article>
         <article class="featured-product load-more-hidden" data-product>
-            <img src="https://img.drz.lazcdn.com/static/pk/p/63f72c07534f45d4126c7dd4623aa1ae.png_400x400q80.png" alt="Men tracksuit">
+            <img src="https://img.drz.lazcdn.com/static/pk/p/8d7cbc97348cd157dbd79d7d8d762ef7.jpg_400x400q80.jpg" alt="Joggers shoes">
             <div class="product-info">
-                <p>Black and white fired printed premium quality 2pc tracksuit tshirt + short track for men</p>
-                <p><span>Rs.693</span></p>
+                <p>Joggers Shoes for men || Sports Shoes for men || Qualified Shoes for men</p>
+                <p><span>Rs.789</span> <em>-61%</em></p>
+                <div class="rating">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                    <span>(127)</span>
+                </div>
+            </div>
+        </article>
+        <article class="featured-product load-more-hidden" data-product>
+            <img src="https://img.drz.lazcdn.com/static/pk/p/6d07a437c2aaf8fbee6f16d63f4fbd22.png_400x400q80.png" alt="Perfume pack">
+            <div class="product-info">
+                <p>Pack of 2 perfume Rich luxurious fragrance Edu De Perfume Long Lasting</p>
+                <p><span>Rs.650</span> <em>-46%</em></p>
+                <div class="rating">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star-half-stroke"></i>
+                    <span>(2379)</span>
+                </div>
+            </div>
+        </article>
+        <article class="featured-product load-more-hidden" data-product>
+            <img src="https://img.drz.lazcdn.com/g/kf/S20a11c35f5704f8bb63af0987da03031x.jpg_400x400q80.jpg" alt="Umrah saving box">
+            <div class="product-info">
+                <p>Umrah Saving Box - Wooden Islamic Money Saving Box 280 Day Plan</p>
+                <p><span>Rs.265</span> <em>-47%</em></p>
                 <div class="rating">
                     <i class="fa-solid fa-star"></i>
                     <i class="fa-solid fa-star"></i>
                     <i class="fa-solid fa-star"></i>
                     <i class="fa-solid fa-star"></i>
                     <i class="fa-solid fa-star"></i>
-                    <span>(276)</span>
+                    <span>(1358)</span>
+                </div>
+            </div>
+        </article>
+        <article class="featured-product load-more-hidden" data-product>
+            <img src="https://img.drz.lazcdn.com/static/pk/p/cd9fbca41ab83d599ca79078c590dcc0.jpg_400x400q80.jpg" alt="Oversized t-shirt">
+            <div class="product-info">
+                <p>Premium Oversized T Shirt For Men Black Varsity Print Hip Hop Streetwear</p>
+                <p><span>Rs.449</span> <em>-10%</em></p>
+                <div class="rating">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                    <span>(530)</span>
                 </div>
             </div>
         </article>
@@ -447,63 +450,57 @@
 </section>
   <button id="load-more" type="button">LOAD MORE</button>
 
-  <section class="service-strip" aria-label="Daraz services">
-    <div class="service-strip__inner">
-      <div class="service-item">
-        <i class="fa-solid fa-store" aria-hidden="true"></i>
-        <div>
-          <strong>DarazMall</strong>
-          <span>100% Authentic</span>
-        </div>
-      </div>
-      <div class="service-item">
-        <i class="fa-solid fa-rotate-left" aria-hidden="true"></i>
-        <div>
-          <strong>7 Days Return</strong>
-          <span>Easy returns policy</span>
-        </div>
-      </div>
-      <div class="service-item">
-        <i class="fa-solid fa-truck-fast" aria-hidden="true"></i>
-        <div>
-          <strong>Free Shipping</strong>
-          <span>On eligible orders</span>
-        </div>
-      </div>
-      <div class="service-item">
-        <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
-        <div>
-          <strong>Safe Payments</strong>
-          <span>Secure checkout</span>
-        </div>
-      </div>
-    </div>
-  </section>
+</div>
 
-  <section class="auth-section">
-    <div class="auth-box" id="login">
-      <h3>Login to Daraz</h3>
-      <button type="button" class="dialog-close" data-close="auth" aria-label="Close login">&times;</button>
+<section class="auth-page" id="auth-page" hidden>
+  <div class="auth-page__wrap">
+    <div class="auth-page__intro">
+      <h3 class="auth-welcome" id="auth-welcome">Welcome to Daraz! Please login.</h3>
+      <p class="auth-intro-switch" id="auth-switch-login">New member? <a href="#signup">Register</a> here.</p>
+      <p class="auth-intro-switch" id="auth-switch-signup" hidden>Already a member? <a href="#login">Login</a> here.</p>
+    </div>
+
+    <div class="auth-card is-active" id="login">
+      <h4>Login with Password</h4>
       <form id="login-form">
-        <input type="text" name="email" placeholder="Email or Phone" required>
-        <input type="password" name="password" placeholder="Password" required>
-        <button type="submit">LOGIN</button>
+        <label for="login-email">Phone Number or Email<span>*</span></label>
+        <input id="login-email" type="text" name="email" placeholder="Please enter your Phone Number or Email" required>
+        <div class="auth-label-row">
+          <label for="login-password">Password<span>*</span></label>
+          <a href="#" class="forgot-link" data-info="Forgot Password?">Forgot Password?</a>
+        </div>
+        <div class="password-field">
+          <input id="login-password" type="password" name="password" placeholder="Please enter your password" required>
+          <button type="button" class="password-toggle" aria-label="Show password"><i class="fa-regular fa-eye-slash"></i></button>
+        </div>
+        <button type="submit" class="auth-submit">LOGIN</button>
       </form>
-      <p>New to Daraz? <a href="#signup">Sign Up here</a></p>
+      <div class="auth-divider"><span>Or, login with</span></div>
+      <div class="social-login">
+        <button type="button" class="social-btn social-btn--facebook" data-social="Facebook"><i class="fa-brands fa-facebook"></i> Facebook</button>
+        <button type="button" class="social-btn social-btn--google" data-social="Google"><img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt=""> Google</button>
+      </div>
     </div>
-    <div class="auth-box" id="signup">
-      <h3>Create Your Account</h3>
-      <button type="button" class="dialog-close" data-close="auth" aria-label="Close sign up">&times;</button>
+
+    <div class="auth-card" id="signup">
+      <h4>Create your Daraz Account</h4>
       <form id="signup-form">
-        <input type="text" name="name" placeholder="Full Name" required>
-        <input type="text" name="email" placeholder="Email or Phone" required>
-        <input type="password" name="password" placeholder="Create Password" required>
-        <button type="submit">SIGN UP</button>
+        <label for="signup-name">Full Name<span>*</span></label>
+        <input id="signup-name" type="text" name="name" placeholder="Please enter your full name" required>
+        <label for="signup-email">Phone Number or Email<span>*</span></label>
+        <input id="signup-email" type="text" name="email" placeholder="Please enter your Phone Number or Email" required>
+        <label for="signup-password">Password<span>*</span></label>
+        <div class="password-field">
+          <input id="signup-password" type="password" name="password" placeholder="Minimum 6 characters with a number and a letter" required minlength="6">
+          <button type="button" class="password-toggle" aria-label="Show password"><i class="fa-regular fa-eye-slash"></i></button>
+        </div>
+        <button type="submit" class="auth-submit">SIGN UP</button>
       </form>
-      <p>Already have an account? <a href="#login">Login here</a></p>
+      <p class="auth-legal">By signing up, you agree to Daraz clone Terms &amp; Conditions and Privacy Policy. This is a learning project and does not create a real Daraz account.</p>
     </div>
-  </section>
-  
+  </div>
+</section>
+
   <!-- Footer Section -->
   <footer>
     <div class="footer-container">
@@ -540,12 +537,12 @@
             <li><a href="#">Daraz Exclusive</a></li>
             <li><a href="#">Daraz University</a></li>
             <li id="sell-on-daraz"><a href="#sell-on-daraz">Sell on Daraz</a></li>
-            <li><a href="#">Join the Daraz Affiliate Program</a></li>
+            <li><a href="#">Join Daraz Affiliate Program</a></li>
           </ul>
         </div>
 
         <!-- Happy Shopping Column -->
-        <div class="footer-column app-column">
+        <div class="footer-column app-column" id="save-more-app">
           <div class="app-download-section">
             <div class="app-icon-text">
               <img src="https://img.lazcdn.com/us/domino/e07f9602-da7e-4d31-9c4f-df69a2e95325_PK-60-60.png" alt="Daraz App">
@@ -559,6 +556,28 @@
               <a href="#"><img src="https://img.lazcdn.com/us/domino/4812f06f-072d-45be-a930-640edf4caeee_PK-126-42.png" alt="Google Play"></a>
               <a href="#"><img src="https://img.lazcdn.com/us/domino/7d216fe8-1bac-4ac9-81d3-072a9fbf32fc_PK-126-42.png" alt="App Gallery"></a>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="footer-extra">
+        <div class="footer-column">
+          <h3>Daraz International</h3>
+          <ul class="footer-inline">
+            <li><a href="#">Pakistan</a></li>
+            <li><a href="#">Bangladesh</a></li>
+            <li><a href="#">Sri Lanka</a></li>
+            <li><a href="#">Myanmar</a></li>
+            <li><a href="#">Nepal</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Follow Us</h3>
+          <div class="social-follow">
+            <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
           </div>
         </div>
       </section>
@@ -634,6 +653,6 @@
     <button type="button" id="product-dialog-add">ADD TO CART</button>
   </div>
 </div>
-  <script src="daraz.js?v=8"></script>
+  <script src="daraz.js?v=15"></script>
 </body>
 </html>

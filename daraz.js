@@ -106,13 +106,14 @@
   }
 
   function closeOverlays() {
-    var auth = document.querySelector('.auth-section');
-    if (auth) {
-      auth.classList.remove('is-modal');
-      auth.querySelectorAll('.auth-box').forEach(function (box) {
+    var authPage = qs('auth-page');
+    if (authPage) {
+      authPage.hidden = true;
+      authPage.querySelectorAll('.auth-card').forEach(function (box) {
         box.classList.remove('is-active');
       });
     }
+    document.body.classList.remove('is-auth');
     ['cart-drawer', 'info-dialog', 'dialog-backdrop', 'product-dialog'].forEach(function (id) {
       var el = qs(id);
       if (el) el.hidden = true;
@@ -128,19 +129,32 @@
 
   function openAuth(which) {
     closeOverlays();
-    var auth = document.querySelector('.auth-section');
-    if (!auth) {
+    var authPage = qs('auth-page');
+    if (!authPage) {
       scrollToSection(which);
       return;
     }
-    auth.classList.add('is-modal');
-    openBackdrop();
+    document.body.classList.add('is-auth');
+    authPage.hidden = false;
     var login = qs('login');
     var signup = qs('signup');
-    if (login) login.classList.toggle('is-active', which !== 'signup');
-    if (signup) signup.classList.toggle('is-active', which === 'signup');
-    var first = auth.querySelector('.auth-box.is-active input');
-    if (first) first.focus();
+    var welcome = qs('auth-welcome');
+    var switchLogin = qs('auth-switch-login');
+    var switchSignup = qs('auth-switch-signup');
+    var isSignup = which === 'signup';
+    if (login) login.classList.toggle('is-active', !isSignup);
+    if (signup) signup.classList.toggle('is-active', isSignup);
+    if (welcome) {
+      welcome.textContent = isSignup ? 'Welcome to Daraz! Create an account.' : 'Welcome to Daraz! Please login.';
+    }
+    if (switchLogin) switchLogin.hidden = isSignup;
+    if (switchSignup) switchSignup.hidden = !isSignup;
+    setScrollTop(0);
+    var first = authPage.querySelector('.auth-card.is-active input');
+    if (first) {
+      try { first.focus({ preventScroll: true }); } catch (err) { first.focus(); }
+    }
+    setScrollTop(0);
   }
 
   function openCart() {
@@ -243,7 +257,15 @@
     'Daraz Exclusive': 'Mall badges on products mark exclusive demo items.',
     'Daraz University': 'Seller courses are not part of this clone.',
     'Sell on Daraz': 'Seller signup is a demo. Use SIGN UP to create a practice account.',
-    'Join the Daraz Affiliate Program': 'Affiliate links are not wired in this clone.',
+    'Join Daraz Affiliate Program': 'Affiliate links are not wired in this clone.',
+    'Forgot Password?': 'Password reset is a demo. Use SIGN UP to create a practice account, then LOGIN.',
+    'Facebook': 'Social login is a demo in this clone. Use email and password instead.',
+    'Google': 'Social login is a demo in this clone. Use email and password instead.',
+    'Pakistan': 'This clone is styled after Daraz Pakistan.',
+    'Bangladesh': 'Country sites are demo links in this clone.',
+    'Sri Lanka': 'Country sites are demo links in this clone.',
+    'Myanmar': 'Country sites are demo links in this clone.',
+    'Nepal': 'Country sites are demo links in this clone.',
     'App Store': 'App download is a demo badge. This site stays in the browser.',
     'Google Play': 'App download is a demo badge. This site stays in the browser.',
     'App Gallery': 'App download is a demo badge. This site stays in the browser.'
@@ -334,7 +356,7 @@
       e.preventDefault();
       var email = (loginForm.querySelector('[name="email"]') || {}).value || 'you';
       var name = email.split('@')[0];
-      var account = document.querySelector('.header-action[data-nav="login"] span');
+      var account = document.querySelector('a[data-nav="login"]');
       if (account) {
         account.textContent = name;
         account.parentElement.classList.add('is-logged');
@@ -349,7 +371,7 @@
     signupForm.addEventListener('submit', function (e) {
       e.preventDefault();
       var name = (signupForm.querySelector('[name="name"]') || {}).value || 'friend';
-      var account = document.querySelector('.header-action[data-nav="login"] span');
+      var account = document.querySelector('a[data-nav="login"]');
       if (account) {
         account.textContent = name;
         account.parentElement.classList.add('is-logged');
@@ -541,7 +563,7 @@
       return;
     }
 
-    if (e.target.closest('a[href], button, input, select, textarea, form, .site-dialog, .cart-drawer, .auth-section, .category-strip, .site-header')) {
+    if (e.target.closest('a[href], button, input, select, textarea, form, .site-dialog, .cart-drawer, .auth-page, .categories-bar, .site-header')) {
       return;
     }
 
@@ -573,7 +595,16 @@
       var hours = Math.floor(remaining / (1000 * 60 * 60));
       var minutes = Math.floor((remaining % (1000 * 60 * 60)) / (1000 * 60));
       var seconds = Math.floor((remaining % (1000 * 60)) / 1000);
-      timerEl.textContent = pad(hours) + ':' + pad(minutes) + ':' + pad(seconds);
+      var h = timerEl.querySelector('[data-unit="h"]');
+      var m = timerEl.querySelector('[data-unit="m"]');
+      var s = timerEl.querySelector('[data-unit="s"]');
+      if (h && m && s) {
+        h.textContent = pad(hours);
+        m.textContent = pad(minutes);
+        s.textContent = pad(seconds);
+      } else {
+        timerEl.textContent = pad(hours) + ':' + pad(minutes) + ':' + pad(seconds);
+      }
     }
     tick();
     setInterval(tick, 1000);
@@ -590,6 +621,55 @@
   })();
 
   renderCart();
+
+  document.querySelectorAll('.password-toggle').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var field = this.parentElement.querySelector('input');
+      if (!field) return;
+      var hide = field.type === 'text';
+      field.type = hide ? 'password' : 'text';
+      this.setAttribute('aria-label', hide ? 'Show password' : 'Hide password');
+      this.innerHTML = hide
+        ? '<i class="fa-regular fa-eye-slash"></i>'
+        : '<i class="fa-regular fa-eye"></i>';
+    });
+  });
+
+  document.querySelectorAll('[data-social]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      openInfo(this.getAttribute('data-social'), infoCopy[this.getAttribute('data-social')]);
+    });
+  });
+
+  document.querySelectorAll('[data-info]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      e.preventDefault();
+      var title = this.getAttribute('data-info');
+      openInfo(title, infoCopy[title] || 'This action is a demo in the clone.');
+    });
+  });
+
+  var catToggle = qs('categories-toggle');
+  var catMenu = qs('categories-menu');
+  if (catToggle && catMenu) {
+    catToggle.addEventListener('click', function () {
+      var open = catMenu.hidden;
+      catMenu.hidden = !open;
+      catToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    document.addEventListener('click', function (e) {
+      if (!e.target.closest('.categories-bar')) {
+        catMenu.hidden = true;
+        catToggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+    catMenu.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        catMenu.hidden = true;
+        catToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
 
   var startHash = (location.hash || '').replace('#', '');
   if (startHash === 'login' || startHash === 'signup') {
