@@ -1,0 +1,11 @@
+{
+  "framework": null,
+  "functions": {
+    "api/products/index.mjs": {
+      "includeFiles": "server/data/products.json"
+    },
+    "api/products/[id].mjs": {
+      "includeFiles": "server/data/products.json"
+    }
+  }
+}
